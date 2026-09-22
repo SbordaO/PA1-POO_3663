@@ -13,9 +13,10 @@ Este proyecto consiste en un sistema de consola desarrollado en Java para la ges
 ## Instrucciones Mínimas de Ejecución
 1. Clonar el repositorio en el entorno de desarrollo local.
 2. Abrir el proyecto en un IDE (Apache NetBeans, VS Code, IntelliJ, Eclipse, etc.).
-3. Asegurarse de compilar los archivos `Producto.java` y `GestionProductos.java`.
-4. Ejecutar el archivo `GestionProductos.java` (contiene el método `main`).
-5. Interactuar con el menú numérico ingresando las opciones del 1 al 7 a través de la consola.
+3. Asegurarse de tener instalado el JDK (Java Development Kit) versión 8 o superior.
+4. Asegurarse de compilar los archivos `Producto.java` y `GestionProductos.java`.
+5. Ejecutar el archivo `GestionProductos.java` (contiene el método `main`).
+6. Interactuar con el menú numérico ingresando las opciones del 1 al 7 a través de la consola.
 
 ## Enlace del Video de Exposición
 * 
@@ -23,7 +24,19 @@ Este proyecto consiste en un sistema de consola desarrollado en Java para la ges
 ## Decisiones de Diseño y Modelado de la Solución
 Para resolver el caso funcional de forma clara y ordenada, el equipo tomó las siguientes decisiones técnicas:
 
-* **Separación de Lógica (Clases):** Se dividió la solución en una clase de dominio (`Producto`) que encapsula la lógica de negocio y estado, y una clase ejecutora (`GestionProductos`) encargada del flujo y la interfaz de consola.
-* **Atributos Globales y Locales:** Se aislaron las propiedades únicas de cada artículo en atributos de instancia (código, nombre, precio, stock), mientras que se utilizó un atributo de clase (`static int totalProductosRegistrados`) para unificar el conteo global de instancias creadas.
-* **Constructores y Métodos:** Se diseñaron constructores parametrizados para la creación íntegra de objetos. Se aplicaron métodos `void` para acciones directas (como actualizar stock) y métodos con retorno (`boolean` y `double`) para validaciones y cálculos matemáticos (como validar disponibilidad o valor de inventario).
-* **Estructuras de Control:** La iteración principal se controló mediante un `do-while` para asegurar la carga inicial del menú. La selección de operaciones se estructuró con un `switch-case`, protegido internamente por condicionales `if-else` para evitar excepciones por objetos nulos o stock insuficiente. Para las métricas del negocio se implementaron operadores de incremento en variables contadoras y acumuladoras.
+1. Abstracción del Dominio (Producto.java):
+- Se representaron las características principales (`codigo`, `nombre`, `precio`, `stock`) mediante atributos globales de instancia.
+- Se aplicó un atributo de clase (`static int totalProductosRegistrados`) para llevar el conteo global de instancias creadas, demostrando el uso de elementos compartidos a nivel de clase.
+
+2. Constructores:
+- Se implementaron constructores sin parámetros y parametrizados para brindar flexibilidad en el momento de instanciar los objetos.
+
+3. Métodos:
+- Métodos void (`mostrarInformacion`, `actualizarStock`): Utilizados para realizar acciones sin retorno de valor.
+- Métodos no void (`validarStock`, `calcularValorTotalInventario`): Utilizados para devolver resultados lógicos (`boolean`) y financieros (`double`).
+- Método estático (`mostrarTotalRegistrados`): Permite acceder al atributo de clase sin depender de la lógica particular de una instancia.
+
+4. Estructuras de Control (`GestionProductos.java`):
+- Se empleó una estructura `do-while` para mantener activo el menú interactivo.
+- Se usó `switch-case` para la selección ordenada de las opciones.
+- Se aplicaron variables contador (`contadorVentas++`) y acumulador (`acumuladorVentasTotales += ...`) para registrar el historial de la sesión.
