@@ -19,7 +19,7 @@ Este proyecto consiste en un sistema de consola desarrollado en Java para la ges
 6. Interactuar con el menú numérico ingresando las opciones del 1 al 7 a través de la consola.
 
 ## Enlace del Video de Exposición
-* 
+* https://youtu.be/FDxqYHE301Y
 
 ## Decisiones de Diseño y Modelado de la Solución
 Para resolver el caso funcional de forma clara y ordenada, el equipo tomó las siguientes decisiones técnicas:
